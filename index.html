@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pranay- Developer portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        scroll-behavior: smooth;
+      }
+      body {
+        background-color: rgb(1, 1, 58);
+        color: white;
+        font-family: poppins, sans-serif;
+      }
+      nav {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        height: 60px;
+        background-color: rgb(2, 2, 74);
+      }
+      nav ul {
+        display: flex;
+        justify-content: center;
+      }
+      nav ul li {
+        list-style: none;
+        margin: 0 15px;
+        cursor: pointer;
+        font-weight: 200;
+      }
+      nav ul li a {
+        text-decoration: none;
+        color: white;
+      }
+      nav ul li a:hover {
+        color: rgb(141, 141, 210);
+        transition: all 0.2s ease-in-out;
+        font-size: 1.04rem;
+      }
+      .left {
+        font-size: 1.7rem;
+        font-weight: 200;
+      }
+      .first-section {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin: 60px 0;
+      }
+      .left-section {
+        width: 50%;
+        height: 300px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        font-size: 1.5rem;
+        font-weight: 300;
+        line-height: 2.5rem;
+        padding: 20px;
+      }
+      main hr {
+        border: 0;
+        height: 1.2px;
+        background-color: rgb(3, 3, 92);
+        margin: 40px 84px;
+      }
+      .right-section {
+        width: 30%;
+        height: 300px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .purple {
+        margin-left: 5px;
+        color: rgb(129, 36, 129);
+      }
+      #element {
+        color: rgb(129, 36, 129);
+      }
+      .second-section {
+        max-width: 80vw;
+        margin: 0px 50px;
+      }
+      .second-section h1 {
+        font-size: 1.8rem;
+        font-weight: 400;
+        margin: 10px 0;
+        color: rgb(255, 255, 255);
+      }
+      footer {
+        width: 100%;
+        height: 100px;
+        background-color: rgb(2, 2, 74);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        bottom: 0;
+      }
+      a {
+        color: rgb(141, 141, 210);
+        text-decoration: none;
+      }
+      a:hover {
+        font-size: 1.04rem;
+      }
+      .second-section ul {
+        list-style: none;
+        padding-left: 0;
+        font-size: 1rem;
+        line-height: 2;
+      }
+      #contact {
+        margin-bottom: 60px;
+      }
+      .second-section ul {
+        list-style: none;
+        padding-left: 0;
+        font-size: 0.95rem;
+        font-weight: 300;
+        line-height: 1.8;
+      }
+      #about-me {
+        font-size: 0.7rem;
+        line-height: 1.8;
+        font-weight: 200;
+      }
+      .profiles-list {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-left: 10px;
+      }
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        height: 60px;
+        background-color: rgb(2, 2, 74);
+      }
+      main {
+        margin-top: 70px;
+      }
+      html {
+        scroll-padding-top: 60px;
+      }
+      .footer p {
+        margin: 2px;
+        font-size: 0.9rem;
+        font-weight: 100;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="left">Pranay's portfolio</div>
+        <div class="right">
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact Me</a></li>
+            <li><a href="#coding-profiles">Coding Profiles</a></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <section class="first-section" id="home">
+        <div class="left-section">
+          <p>Hi there, I am <span class="purple">Pranay Reddy</span></p>
+          <p>I love to create beautiful and functional websites.</p>
+          <p><span id="element"></span></p>
+        </div>
+        <div class="right-section">
+          <img
+            src="dev.webp"
+            alt="devloper_image"
+            style="width: 100%; height: 100%; object-fit: cover"
+          />
+        </div>
+      </section>
+      <hr />
+      <section class="second-section" id="about">
+        <h1>About Me</h1>
+        <p id="about-me">
+          I'm Pranay Reddy, a third-year undergraduate student pursuing a
+          Bachelor's degree in Computer Science and Engineering at
+          <strong
+            >Gokaraju Rangaraju Institute of Engineering and Technology
+            (GRIET)</strong
+          >, Hyderabad. My academic journey has been shaped by a deep curiosity
+          for how technology works and a passion for building practical,
+          real-world applications. Over the past few years, I’ve developed
+          strong skills in web development, problem-solving, and data structures
+          and algorithms. I actively engage in competitive programming to
+          sharpen my logical thinking and regularly participate in coding
+          contests on platforms like LeetCode and CodeChef. I’m particularly
+          fascinated by how artificial intelligence is transforming industries,
+          and I aim to contribute meaningfully to this space through continuous
+          learning and hands-on project experience. I thrive in collaborative
+          environments, enjoy open-source contributions, and constantly seek
+          opportunities to grow as a full-stack developer and problem solver.
+        </p>
+      </section>
+      <hr />
+      <!-- Skills section -->
+      <section class="second-section" id="skills">
+        <h1>Skills</h1>
+        <ul>
+          <li>1)HTML, CSS, JavaScript</li>
+          <li>2)React.js, Node.js</li>
+          <li>3)Python, Java</li>
+          <li>4)Git, GitHub, VS Code</li>
+          <li>5)Responsive Web Design</li>
+          <li>6)Competitive Programming</li>
+          <li>7)Data Structures and Algorithms</li>
+        </ul>
+      </section>
+      <hr />
+      <!-- Projects section -->
+      <section class="second-section" id="projects">
+        <h1>Projects</h1>
+        <p>Coming soon... 🚧</p>
+      </section>
+      <hr />
+      <!-- Contact Section -->
+      <section class="second-section" id="contact">
+        <h1>Contact Me</h1>
+        <ul class="profiles-list">
+          <li>
+            <a href="mailto:pranayreddyedmala@gmail.com">Email me</a>
+          </li>
+          <li>
+            <a
+              href="https://www.linkedin.com/in/pranayreddy-edmala-a0355b2b1/"
+              target="_blank"
+            >
+              LinkedIn
+            </a>
+          </li>
+        </ul>
+      </section>
+
+      <hr />
+      <section class="second-section" id="coding-profiles">
+        <h1>Coding Profiles</h1>
+        <ul class="profiles-list">
+          <li>
+            <a href="https://leetcode.com/u/1by8FRI9TP/" target="_blank"
+              >LeetCode</a
+            >
+          </li>
+          <li>
+            <a href="https://www.codechef.com/users/pranay3214" target="_blank"
+              >CodeChef</a
+            >
+          </li>
+          <li>
+            <a href="https://github.com/pranayreddy-08" target="_blank"
+              >GitHub</a
+            >
+          </li>
+        </ul>
+      </section>
+    </main>
+    <footer>
+      <div class="footer">
+        <p>Pranay Reddy &copy; 2025</p>
+        <p>Thank you for visiting my portfolio!</p>
+      </div>
+    </footer>
+
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <script>
+      var typed = new Typed("#element", {
+        strings: [
+          "competitive programmer",
+          "Web designer",
+          "AI enthusiast",
+          "DSA Expert",
+          "Open Source Contributor",
+          "Web developer.",
+        ],
+        typeSpeed: 60,
+      });
+    </script>
+  </body>
+</html>
