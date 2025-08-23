@@ -1,12 +1,33 @@
-# React + Vite
+# Pranay Reddy Edmala — Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Clean, responsive portfolio built with React + Tailwind. Focused on full-stack web, DSA and competitive programming.
 
-Currently, two official plugins are available:
+[![Live – GitHub Pages](https://img.shields.io/badge/Live-GitHub_Pages-121212?logo=github&labelColor=6b7280)](https://pranayreddy-08.github.io/<REPO_NAME>/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+> **Live link:** https://pranayreddy-08.github.io/<REPO_NAME>  
+> Replace `<REPO_NAME>` with your repository name (e.g. `portfolio`).  
+> If this is a *user site* repo named `pranayreddy-08.github.io`, the live link is simply: https://pranayreddy-08.github.io
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## ✨ Features
+- Modern UI with Tailwind
+- Mobile-first, responsive layout
+- Projects, skills, and contact sections
+- Dark mode friendly
+
+## 🛠 Tech
+- React + Vite or CRA
+- Tailwind CSS
+- lucide-react icons
+
+## 🚀 Local development
+
+```bash
+# install deps
+npm install
+
+# run dev server
+npm run dev     # (Vite)
+# or
+npm start       # (Create React App)
