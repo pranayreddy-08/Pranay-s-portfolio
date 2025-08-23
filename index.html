@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Inter font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+     
+    <!-- Tailwind CDN + config -->
+   <script>
+  window.tailwind = {
+    theme: {
+      extend: {
+        fontFamily: { sans: ["Inter", "system-ui", "Arial", "sans-serif"] },
+        colors: {
+          primary: "#0ea5e9",   /* teal-blue */
+          dark: "#0f172a",      /* deep navy */
+          light: "#f8fafc"      /* very light gray */
+        },
+        container: { center: true, padding: "1rem" }
+      }
+    }
+  }
+   </script>
+   <script src="https://cdn.tailwindcss.com"></script>
+
+
+    <!-- smooth scrolling (nice touch) -->
+    <style>html{scroll-behavior:smooth}</style>
+    
+    <!-- <link rel="icon" type="image/svg+xml" href="/vite.svg" /> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pranay's Portfolio</title>
+  </head>
+  <body class="font-sans bg-neutral-50 text-neutral-900" >
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
