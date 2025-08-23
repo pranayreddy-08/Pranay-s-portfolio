@@ -8,6 +8,6 @@ export default defineConfig({
       plugins: [tailwind()],  
     },
   },
-  base: '/Pranay-s-portfolio/',
+  base: '/',
 })
 
