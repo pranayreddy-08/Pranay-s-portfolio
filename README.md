@@ -1,33 +1,43 @@
-# Pranay Reddy Edmala — Portfolio
+# 🚀 Pranay Reddy Edmala — Portfolio
 
-Clean, responsive portfolio built with React + Tailwind. Focused on full-stack web, DSA and competitive programming.
+A clean, responsive portfolio built with **React + Vite + Tailwind CSS**, showcasing my skills, projects, and competitive programming profiles.  
 
-[![Live – GitHub Pages](https://img.shields.io/badge/Live-GitHub_Pages-121212?logo=github&labelColor=6b7280)](https://pranayreddy-08.github.io/<REPO_NAME>/)
-
-> **Live link:** https://pranayreddy-08.github.io/<REPO_NAME>  
-> Replace `<REPO_NAME>` with your repository name (e.g. `portfolio`).  
-> If this is a *user site* repo named `pranayreddy-08.github.io`, the live link is simply: https://pranayreddy-08.github.io
+🌐 **Live Site:** [https://pranay3214.netlify.app](https://pranay3214.netlify.app)
 
 ---
 
 ## ✨ Features
-- Modern UI with Tailwind
-- Mobile-first, responsive layout
-- Projects, skills, and contact sections
-- Dark mode friendly
+- Responsive design with dark mode support 🌙
+- Sections for **About, Skills, Projects, Contact**
+- Integrated links to **GitHub, LinkedIn, LeetCode, CodeChef**
+- Smooth animations & clean UI powered by Tailwind
 
-## 🛠 Tech
-- React + Vite or CRA
-- Tailwind CSS
-- lucide-react icons
+---
 
-## 🚀 Local development
+## 🛠️ Tech Stack
+- **Frontend:** React, Vite, Tailwind CSS  
+- **Icons:** lucide-react  
+- **Deployment:** Netlify  
+
+---
+
+## 📸 Screenshots
+
+### Hero Section
+![Hero Section](https://github.com/pranayreddy-08/Pranay-s-portfolio/assets/your-screenshot-id-1)
+
+### Projects Section
+![Projects](https://github.com/pranayreddy-08/Pranay-s-portfolio/assets/your-screenshot-id-2)
+
+> *(You can replace these with real screenshots by uploading them in your GitHub repo issues/discussions and copying the image links.)*
+
+---
+
+## 🚀 Getting Started (Local Development)
+
+Clone the repo and install dependencies:
 
 ```bash
-# install deps
+git clone https://github.com/pranayreddy-08/Pranay-s-portfolio.git
+cd Pranay-s-portfolio
 npm install
-
-# run dev server
-npm run dev     # (Vite)
-# or
-npm start       # (Create React App)
