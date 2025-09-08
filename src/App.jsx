@@ -17,13 +17,40 @@ const DATA = {
     leetcode: 'https://leetcode.com/u/1by8FRI9TP/',
     codechef: 'https://www.codechef.com/users/pranay3214',
   },
-  skills: [
-    { group: 'Frontend', items: ['HTML', 'CSS', 'JavaScript', 'React', 'Responsive Web Design'] },
-    { group: 'Programming', items: ['C++', 'Python'] },
-    { group: 'Tools', items: ['Git', 'GitHub', 'VS Code'] },
-    { group: 'CS Fundamentals', items: ['Data Structures', 'Algorithms', 'Competitive Programming'] },
-  ],
+skills: [
+  {
+    group: 'Frontend',
+    items: ['HTML','CSS','JavaScript','React','Responsive Web Design','Tailwind CSS','Bootstrap'],
+  },
+  {
+    group: 'Backend',
+    items: ['Node.js','Express.js','REST API Development'],
+  },
+  {
+    group: 'Databases',
+    items: ['MySQL','PostgreSQL','MongoDB'],
+  },
+  {
+    group: 'Programming',
+    items: ['C','C++','Python'],
+  },
+  {
+    group: 'Tools',
+    items: ['Git','GitHub','VS Code','Postman','Netlify','Vercel'],
+  },
+  {
+    group: 'CS Fundamentals',
+    items: ['Data Structures','Algorithms','Object-Oriented Programming (OOPs)','DBMS','Operating Systems','System Design','Competitive Programming'],
+  },
+],
+
   projects: [
+    {
+    title: 'VeriHire (In Development)',
+    desc: 'Professional networking platform validating identities and skills to curb fraudulent profiles.',
+    tech: ['React', 'Node.js', 'PostgreSQL'],
+    link: 'https://github.com/pranayreddy-08/Verihire',
+    },
     {
       title: 'Deepfake Detection (WIP)',
       desc: 'Exploratory project on detecting AI-generated media (images/videos).',
@@ -84,7 +111,7 @@ function Nav() {
   }, []);
 
   return (
-<header className="sticky top-0 z-50 border-b border-rose-200/60 dark:border-rose-900/60 backdrop-blur bg-rose-100/90 dark:bg-rose-950/90">
+<header className="sticky top-0 z-60 border-b-2 border-neutral-700 bg-black h-15 backdrop-blur flex items-center">
       <Container>
         <div className="h-14 flex items-center justify-between">
           <a href="#home" className="font-semibold text-base sm:text-lg tracking-tight">
@@ -156,11 +183,10 @@ function Section({ id, title, children, kicker }) {
     <section id={id} className="scroll-mt-24 py-12 sm:py-16">
       <Container>
         {kicker && (
-          <p className="text-[11px] uppercase tracking-[0.2em] text-neutral-500 mb-2">{kicker}</p>
+          <p className="text-[13px] uppercase tracking-[0.2em] text-neutral-500 mb-2">{kicker}</p>
         )}
-        <h2 className="text-2xl sm:text-3xl font-bold mb-6 tracking-tight relative inline-block">
+        <h2 className="text-xl sm:text-4xl font-bold mb-6 tracking-tight relative inline-block">
           {title}
-          <span className="absolute left-0 -bottom-1 w-1/2 h-1 bg-gradient-to-r from-indigo-500 to-pink-500 rounded-full"></span>
         </h2>
         {children}
       </Container>
@@ -177,12 +203,14 @@ function Hero() {
         <div className="min-h-dvh">
           <div className="grid lg:grid-cols-2 gap-10 items-center">
             <div>
-              <div className="inline-flex items-center gap-2 rounded-full border border-indigo-200 dark:border-indigo-800 px-3 py-1 text-xs font-medium mb-3 bg-white/70 dark:bg-neutral-900/70">
-                <BrainCircuit className="size-3" /> {DATA.headline}
-              </div>
+
               <h1 className="text-3xl sm:text-4xl lg:text-[42px] font-extrabold leading-[1.15] tracking-tight">
                 Hi, I’m <span className="text-indigo-700 dark:text-indigo-300">{DATA.name}</span>
               </h1>
+              <br />
+              <div className="inline-flex items-center gap-2 rounded-full border border-indigo-200 dark:border-indigo-800 px-3 py-1 text-xs font-medium mb-3 bg-white/70 dark:bg-neutral-900/70">
+                <BrainCircuit className="size-3" /> {DATA.headline}
+              </div>
               <p className="mt-3 text-neutral-700 dark:text-neutral-300 max-w-prose text-[15px]">
                 {DATA.about}
               </p>
@@ -207,6 +235,14 @@ function Hero() {
                 >
                   <Linkedin className="size-4" /> LinkedIn
                 </a>
+                <a
+                  href="/Pranay_resume (12).pdf"
+                  download
+                  className="inline-flex items-center gap-2 rounded-lg border border-green-300 dark:border-green-700 px-4 py-2 text-sm font-medium bg-white/70 dark:bg-neutral-900/70 hover:bg-green-50 dark:hover:bg-green-900/30 transition"
+                >
+                  <ArrowRight className="size-4" /> Download CV
+                </a>
+
               </div>
             </div>
 
@@ -219,42 +255,10 @@ function Hero() {
                   </p>
                 </div>
               </div>
-              <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 hidden sm:block">
-                <div className="rounded-xl border border-dashed border-indigo-300 dark:border-indigo-700 px-4 py-2 text-xs inline-flex items-center gap-2 bg-white/70 dark:bg-neutral-900/70 backdrop-blur">
-                  <Trophy className="size-5 text-pink-500" /> DSA & Competitive Programming
-                </div>
-              </div>
             </div>
           </div>
 
-          <div className="mt-8 flex flex-wrap gap-3 text-sm text-neutral-600 dark:text-neutral-400">
-            <a
-              href={DATA.links.leetcode}
-              target="_blank"
-              rel="noreferrer"
-              className="underline underline-offset-4 decoration-indigo-300 hover:decoration-indigo-500"
-            >
-              LeetCode
-            </a>
-            <span>•</span>
-            <a
-              href={DATA.links.codechef}
-              target="_blank"
-              rel="noreferrer"
-              className="underline underline-offset-4 decoration-pink-300 hover:decoration-pink-500"
-            >
-              CodeChef
-            </a>
-            <span>•</span>
-            <a
-              href={DATA.links.github}
-              target="_blank"
-              rel="noreferrer"
-              className="underline underline-offset-4 decoration-violet-300 hover:decoration-violet-500"
-            >
-              GitHub
-            </a>
-          </div>
+         
         </div>
       </Container>
     </div>
@@ -264,30 +268,35 @@ function Hero() {
 function About() {
   return (
     <Section id="about" title="About" kicker="Get to know me">
-      <div className="grid md:grid-cols-2 gap-8">
-        <div className="prose dark:prose-invert max-w-none">
-          <p className="text-[15px] leading-7">
-            {DATA.summary}
-          </p>
-          <ul className="text-[15px] leading-7 marker:text-indigo-500">
-            <li>Currently: 3rd-year undergrad @ GRIET</li>
-            <li>Interests: Full-stack web, AI/ML, competitive programming</li>
-            <li>Open to: Internships, freelance projects, collaborations</li>
-          </ul>
-        </div>
-        <div className="rounded-xl border border-indigo-200 dark:border-indigo-800 p-6 bg-white/70 dark:bg-neutral-950/40">
-          <h3 className="font-semibold mb-3 text-indigo-700 dark:text-indigo-300">Quick Links</h3>
-          <div className="flex flex-col gap-3 text-sm">
-            <a className="inline-flex items-center gap-2 hover:text-indigo-600 dark:hover:text-indigo-400" href={DATA.links.linkedin} target="_blank" rel="noreferrer"><Linkedin className="size-4"/> LinkedIn</a>
-            <a className="inline-flex items-center gap-2 hover:text-indigo-600 dark:hover:text-indigo-400" href={DATA.links.github} target="_blank" rel="noreferrer"><Github className="size-4"/> GitHub</a>
-            <a className="inline-flex items-center gap-2 hover:text-indigo-600 dark:hover:text-indigo-400" href={DATA.links.leetcode} target="_blank" rel="noreferrer"><Code2 className="size-4"/> LeetCode</a>
-            <a className="inline-flex items-center gap-2 hover:text-indigo-600 dark:hover:text-indigo-400" href={DATA.links.codechef} target="_blank" rel="noreferrer"><Trophy className="size-4"/> CodeChef</a>
-          </div>
-        </div>
+      <div className="max-w-6xl mx-auto text-left">
+        <p className="text-[15px] leading-7 mb-4">
+          I’m a 3rd-year Computer Science undergraduate at GRIET with a deep interest in
+          full-stack web development, AI/ML, and competitive programming. My journey so far
+          has been about combining strong problem-solving skills with a passion for building
+          clean and functional applications. I enjoy exploring new technologies and applying
+          them to create real-world solutions.
+        </p>
+
+        <p className="text-[15px] leading-7 mb-4">
+          On the development side, I specialize in crafting responsive UIs using React and
+          Tailwind CSS, while also building scalable back-end services with Node.js and
+          Express. Beyond development, I regularly practice Data Structures and Algorithms
+          to sharpen my logic and ensure efficiency in the solutions I design. These skills
+          not only help me in competitive programming but also in writing optimized code for
+          projects.
+        </p>
+
+        <p className="text-[15px] leading-7">
+          In the short term, I am actively seeking internships and collaborative projects
+          where I can contribute to impactful work and learn from experienced teams. Looking
+          ahead, my long-term vision is to design scalable products that balance performance
+          with great user experience, while continuing to grow as a versatile engineer.
+        </p>
       </div>
     </Section>
   );
 }
+
 
 function Skills() {
   return (
@@ -350,13 +359,6 @@ function Projects() {
           </a>
         ))}
 
-        {/* Placeholder card to add more projects */}
-        <div className="rounded-xl border border-dashed border-indigo-300 dark:border-indigo-700 p-6 flex flex-col items-start justify-center bg-white/60 dark:bg-neutral-950/30">
-          <p className="text-sm text-neutral-600 dark:text-neutral-400">Have more work?</p>
-          <button className="mt-2 inline-flex items-center gap-2 rounded-lg border border-indigo-300 dark:border-indigo-700 px-3 py-1.5 text-sm hover:bg-indigo-50 dark:hover:bg-indigo-900/30">
-            Add a project
-          </button>
-        </div>
       </div>
     </Section>
   );
@@ -426,7 +428,7 @@ function Contact() {
 
 function Footer() {
   return (
-      <footer className="py-10 border-t border-rose-200 dark:border-rose-900 bg-rose-100/90 dark:bg-rose-950/90">
+      <footer className="py-10 border-t border-neutral-800 bg-black-700">
       <Container>
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-neutral-500">
           <p>
@@ -467,7 +469,7 @@ function Footer() {
 
 export default function Portfolio() {
   return (
-<div className="min-h-dvh bg-gradient-to-b from-rose-50 via-white to-rose-100 text-neutral-900 dark:from-rose-950 dark:via-neutral-950 dark:to-rose-900 dark:text-neutral-100 selection:bg-rose-600 selection:text-white dark:selection:bg-rose-400 dark:selection:text-neutral-900">
+<div className="min-h-dvh bg-black text-neutral-100 selection:bg-rose-600 selection:text-white">
       <Nav />
       <Hero />
       <About />
