@@ -7,7 +7,7 @@ const DATA = {
   headline: 'Aspiring Full-Stack Developer • DSA Enthusiast',
   location: 'Hyderabad, India',
   about:
-    "I'm a 3rd-year B.Tech (CSE) student at GRIET with a passion for building clean, responsive web apps and sharpening problem-solving through competitive programming.",
+    "I'm a 3rd-year B.Tech (CSBS) student at GRIET with a passion for building clean, responsive web apps and sharpening problem-solving through competitive programming.",
   summary:
     "I enjoy turning ideas into working products using React and JavaScript on the front end, and I’m exploring Python/Node on the back end. I’m actively learning advanced DSA and system design.",
   email: 'pranayreddyedmala@gmail.com',
