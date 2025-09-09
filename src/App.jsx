@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Github, Linkedin, Mail, ExternalLink, Code2, ArrowRight, Menu, X, Trophy, BrainCircuit } from 'lucide-react';
+import { Github, Linkedin, Mail, ExternalLink, Code2, ArrowRight, Menu, X, Trophy, BrainCircuit ,Phone, CodeIcon, Shield, Terminal} from 'lucide-react';
 
 // ======== EDIT YOUR DATA HERE ========
 const DATA = {
@@ -11,11 +11,16 @@ const DATA = {
   summary:
     "I enjoy turning ideas into working products using React and JavaScript on the front end, and I’m exploring Python/Node on the back end. I’m actively learning advanced DSA and system design.",
   email: 'pranayreddyedmala@gmail.com',
+  phone: '+91 7013890597', 
+
   links: {
     github: 'https://github.com/pranayreddy-08',
     linkedin: 'https://www.linkedin.com/in/pranay-reddy-edmala-a0355b2b1/',
     leetcode: 'https://leetcode.com/u/1by8FRI9TP/',
     codechef: 'https://www.codechef.com/users/pranay3214',
+    hive: 'https://hive.smartinterviews.in/profile/23241a3214',
+    hackerrank: 'https://www.hackerrank.com/profile/23241A3214',
+    codeforces: 'https://codeforces.com/profile/23241A3214'
   },
 skills: [
   {
@@ -36,11 +41,11 @@ skills: [
   },
   {
     group: 'Tools',
-    items: ['Git','GitHub','VS Code','Postman','Netlify','Vercel'],
+    items: ['Git','GitHub','VS Code','Netlify','Vercel'],
   },
   {
     group: 'CS Fundamentals',
-    items: ['Data Structures','Algorithms','Object-Oriented Programming (OOPs)','DBMS','Operating Systems','System Design','Competitive Programming'],
+    items: ['Data Structures','Algorithms','Object-Oriented Programming (OOPs)','DBMS','Operating Systems','Computer Networks'],
   },
 ],
 
@@ -52,15 +57,15 @@ skills: [
     link: 'https://github.com/pranayreddy-08/Verihire',
     },
     {
-      title: 'Deepfake Detection (WIP)',
+      title: 'Deepfake Detection ',
       desc: 'Exploratory project on detecting AI-generated media (images/videos).',
       tech: ['Python'],
       link: 'https://github.com/pranayreddy-08/deepfake.detection',
     },
     {
-      title: "Pranay's Portfolio (v1)",
-      desc: 'Simple HTML/CSS portfolio — now upgraded to this React version.',
-      tech: ['HTML', 'CSS'],
+      title: "Pranay's Portfolio ",
+      desc: 'Simple HTML/CSS portfolio — later upgraded to this React version.',
+      tech: ['HTML', 'CSS','JavaScript','React'],
       link: 'https://github.com/pranayreddy-08/Pranay-s-portfolio',
     },
     {
@@ -101,6 +106,7 @@ function Nav() {
     { href: '#about', label: 'About' },
     { href: '#skills', label: 'Skills' },
     { href: '#projects', label: 'Projects' },
+    { href: '#profiles', label: 'Profiles' },  
     { href: '#contact', label: 'Contact' },
   ];
 
@@ -111,7 +117,7 @@ function Nav() {
   }, []);
 
   return (
-<header className="sticky top-0 z-60 border-b-2 border-neutral-700 bg-black h-15 backdrop-blur flex items-center">
+    <header className="sticky top-0 z-[60] border-b-2 border-neutral-700 bg-black/80 h-[60px] backdrop-blur flex items-center">
       <Container>
         <div className="h-14 flex items-center justify-between">
           <a href="#home" className="font-semibold text-base sm:text-lg tracking-tight">
@@ -132,10 +138,12 @@ function Nav() {
               href={DATA.links.github}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border border-indigo-200 dark:border-indigo-800 px-3.5 py-1.5 text-sm font-medium bg-white/70 dark:bg-neutral-900/70 hover:bg-indigo-50 dark:hover:bg-indigo-900/30 transition"
+              onClick={() => setOpen(false)}
+              className="text-sm inline-flex items-center gap-2 hover:text-indigo-600 dark:hover:text-indigo-400"
             >
               <Github className="size-4" /> GitHub
             </a>
+
           </nav>
 
           <button
@@ -197,74 +205,40 @@ function Section({ id, title, children, kicker }) {
 function Hero() {
   return (
     <div id="home" className="relative overflow-hidden">
-      {/* Colorful gradient background */}
+      {/* Full gradient background */}
       <div className="absolute inset-0 -z-10 bg-gradient-to-b from-indigo-100 via-white to-pink-100 dark:from-indigo-950 dark:via-neutral-950 dark:to-pink-900" />
-      <Container>
-        <div className="min-h-dvh">
-          <div className="grid lg:grid-cols-2 gap-10 items-center">
-            <div>
 
-              <h1 className="text-3xl sm:text-4xl lg:text-[42px] font-extrabold leading-[1.15] tracking-tight">
-                Hi, I’m <span className="text-indigo-700 dark:text-indigo-300">{DATA.name}</span>
-              </h1>
-              <br />
-              <div className="inline-flex items-center gap-2 rounded-full border border-indigo-200 dark:border-indigo-800 px-3 py-1 text-xs font-medium mb-3 bg-white/70 dark:bg-neutral-900/70">
-                <BrainCircuit className="size-3" /> {DATA.headline}
-              </div>
-              <p className="mt-3 text-neutral-700 dark:text-neutral-300 max-w-prose text-[15px]">
-                {DATA.about}
-              </p>
-              <div className="mt-5 flex flex-wrap items-center gap-3">
-                <a
-                  href="#projects"
-                  className="inline-flex items-center gap-2 rounded-lg bg-indigo-600 text-white px-4 py-2 text-sm font-medium hover:bg-indigo-700 dark:bg-indigo-400 dark:hover:bg-indigo-500 transition"
-                >
-                  <Code2 className="size-4" /> View Projects <ArrowRight className="size-4" />
-                </a>
-                <a
-                  href={`mailto:${DATA.email}`}
-                  className="inline-flex items-center gap-2 rounded-lg border border-pink-300 dark:border-pink-700 px-4 py-2 text-sm font-medium bg-white/70 dark:bg-neutral-900/70 hover:bg-pink-50 dark:hover:bg-pink-900/30 transition"
-                >
-                  <Mail className="size-4" /> Contact
-                </a>
-                <a
-                  href={DATA.links.linkedin}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-2 rounded-lg border border-indigo-300 dark:border-indigo-700 px-4 py-2 text-sm font-medium bg-white/70 dark:bg-neutral-900/70 hover:bg-indigo-50 dark:hover:bg-indigo-900/30 transition"
-                >
-                  <Linkedin className="size-4" /> LinkedIn
-                </a>
-                <a
-                  href="/Pranay_resume (12).pdf"
-                  download
-                  className="inline-flex items-center gap-2 rounded-lg border border-green-300 dark:border-green-700 px-4 py-2 text-sm font-medium bg-white/70 dark:bg-neutral-900/70 hover:bg-green-50 dark:hover:bg-green-900/30 transition"
-                >
-                  <ArrowRight className="size-4" /> Download CV
-                </a>
-
-              </div>
-            </div>
-
-            <div className="relative">
-              <div className="aspect-square rounded-xl  p-12 sm:p-16 lg:p-20 shadow-xl">
-                <div className="h-full w-full rounded-xl bg-gradient-to-br grid place-content-center text-center p-6">
-                  <div className="text-[8rem]">👨‍💻</div>
-                  <p className="mt-2 text-2xl text-neutral-600 dark:text-neutral-400">
-                    Building clean, responsive UIs
-                  </p>
-                </div>
-              </div>
-            </div>
+      <div className="w-screen h-screen flex items-center justify-center">
+        <div className="w-full max-w-3xl text-center px-4">
+          <h1 className="text-3xl sm:text-4xl lg:text-[42px] font-extrabold leading-[1.15] tracking-tight">
+            Hi, I’m <span className="text-indigo-700 dark:text-indigo-300">{DATA.name}</span>
+          </h1>
+          <br />
+          <div className="inline-flex items-center gap-2 rounded-full border border-indigo-200 dark:border-indigo-800 px-3 py-1 text-xs font-medium mb-3 bg-white/70 dark:bg-neutral-900/70">
+            <BrainCircuit className="size-3" /> {DATA.headline}
           </div>
+          <p className="mt-3 text-neutral-700 dark:text-neutral-300 max-w-prose text-[15px] mx-auto">
+            {DATA.about}
+          </p>
 
-         
+          {/* Download CV button */}
+          <div className="mt-5">
+            <a
+              href="/Pranay_resume (12).pdf"
+              download
+              className="inline-flex items-center gap-2 rounded-lg px-6 py-2 text-sm font-medium 
+                         bg-indigo-600 text-white 
+                         hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 
+                         transform transition-transform duration-200 hover:scale-105"
+            >
+              <ArrowRight className="size-4" /> Download CV
+            </a>
+          </div>
         </div>
-      </Container>
+      </div>
     </div>
   );
 }
-
 function About() {
   return (
     <Section id="about" title="About" kicker="Get to know me">
@@ -363,68 +337,102 @@ function Projects() {
     </Section>
   );
 }
+function Profiles() {
+  // Build the list from your DATA.links
+  const items = [
+    { label: 'LeetCode', href: DATA.links.leetcode, sub: 'Practice • Contests', Icon: Code2 },
+    { label: 'CodeChef', href: DATA.links.codechef, sub: 'Ratings • Cook-offs', Icon: Trophy },
+    { label: 'Codeforces', href: DATA.links.codeforces, sub: 'Div. Rounds', Icon: Shield },
+    // Hive with provided logo image
+    { label: 'Hive (Smart Interviews)', href: DATA.links.hive, sub: 'Structured DSA', Icon: BrainCircuit },
+    { label: 'HackerRank', href: DATA.links.hackerrank, sub: 'Skill Badges', Icon: Terminal },
+    { label: 'GitHub', href: DATA.links.github, sub: 'Projects • Commits', Icon: Github },
+  ].filter(Boolean);
+
+  return (
+    <Section id="profiles" title="Coding Profiles" kicker="Where I practice & share work">
+      {/* Responsive grid: 1 col on mobile, 3 on md+ */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-6xl mx-auto">
+        {items.map(({ label, href, sub, Icon, img }) => (
+          <a
+            key={label}
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group rounded-xl border border-neutral-200 dark:border-neutral-800 p-5 bg-white/70 dark:bg-neutral-950/40 hover:shadow-xl hover:-translate-y-1 transition"
+          >
+            <div className="flex items-center gap-3">
+              {/* Icon/logo */}
+              {img ? (
+                <span className="inline-flex items-center justify-center size-10 rounded-lg bg-neutral-100 dark:bg-neutral-900 overflow-hidden">
+                  <img src={img} alt={label} className="h-6 w-6 object-contain" />
+                </span>
+              ) : (
+                <span className="inline-flex items-center justify-center size-10 rounded-lg bg-indigo-100 dark:bg-indigo-900/40">
+                  {Icon && <Icon className="size-5 text-indigo-700 dark:text-indigo-300" />}
+                </span>
+              )}
+
+              {/* Texts */}
+              <div>
+                <h3 className="font-semibold">{label}</h3>
+                <p className="text-xs text-neutral-500">{sub}</p>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </Section>
+  );
+}
+
 
 function Contact() {
   return (
     <Section id="contact" title="Contact" kicker="Let’s work together">
-      <div className="grid md:grid-cols-2 gap-8 items-start">
-        <div className="rounded-xl border border-indigo-200 dark:border-indigo-800 p-6 bg-white/70 dark:bg-neutral-950/40">
-          <h3 className="font-semibold text-indigo-700 dark:text-indigo-300">Email</h3>
-          <p className="text-sm text-neutral-600 dark:text-neutral-400 mt-1">
-            I&apos;m open to internships, collaborations, and freelance work.
-          </p>
+      <div className="rounded-xl border border-indigo-200 dark:border-indigo-800 p-6 bg-white/70 dark:bg-neutral-950/40">
+        <p className="text-sm text-neutral-600 dark:text-neutral-400 mt-1">
+          I’m open to internships, collaborations, and freelance work.
+        </p>
+        <h3 className="font-semibold text-indigo-700 dark:text-indigo-300">Reach me at</h3>
+        {/* Responsive grid: 1 col on mobile, 3 cols on large */}
+        <div className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4 max-w-4xl mx-auto">
+          {/* Mobile */}
+          <a
+            href={`tel:${DATA.phone}`}
+            className="flex items-center justify-center gap-3 rounded-lg border border-neutral-200 dark:border-neutral-800 px-4 py-3 hover:bg-neutral-50 dark:hover:bg-neutral-900/40 transition"
+          >
+            <Phone className="size-4 text-emerald-600 dark:text-emerald-400" />
+            <span className="text-sm">{DATA.phone}</span>
+          </a>
+
+          {/* LinkedIn */}
+          <a
+            href={DATA.links.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center gap-3 rounded-lg border border-neutral-200 dark:border-neutral-800 px-4 py-3 hover:bg-neutral-50 dark:hover:bg-neutral-900/40 transition"
+          >
+            <Linkedin className="size-4 text-indigo-600 dark:text-indigo-400" />
+            <span className="text-sm">LinkedIn</span>
+          </a>
+
+          {/* Email */}
           <a
             href={`mailto:${DATA.email}`}
-            className="mt-3 inline-flex items-center gap-2 rounded-lg bg-indigo-600 text-white px-4 py-2 text-sm font-medium hover:bg-indigo-700 dark:bg-indigo-400 dark:hover:bg-indigo-500 transition"
+            className="flex items-center justify-center gap-3 rounded-lg border border-neutral-200 dark:border-neutral-800 px-4 py-3 hover:bg-neutral-50 dark:hover:bg-neutral-900/40 transition"
           >
-            <Mail className="size-4" /> {DATA.email}
+            <Mail className="size-4 text-pink-600 dark:text-pink-400" />
+            <span className="text-sm">{DATA.email}</span>
           </a>
-        </div>
-        <div className="rounded-xl border border-pink-200 dark:border-pink-700 p-6 bg-white/70 dark:bg-neutral-950/40">
-          <h3 className="font-semibold mb-3 text-pink-600 dark:text-pink-300">Social</h3>
-          <div className="flex flex-wrap gap-3">
-            <a
-              href={DATA.links.linkedin}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 rounded-lg border border-indigo-300 dark:border-indigo-700 px-3 py-1.5 text-sm hover:bg-indigo-50 dark:hover:bg-indigo-900/30"
-            >
-              <Linkedin className="size-4" />
-              LinkedIn
-            </a>
-            <a
-              href={DATA.links.github}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 rounded-lg border border-violet-300 dark:border-violet-700 px-3 py-1.5 text-sm hover:bg-violet-50 dark:hover:bg-violet-900/30"
-            >
-              <Github className="size-4" />
-              GitHub
-            </a>
-            <a
-              href={DATA.links.leetcode}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 rounded-lg border border-emerald-300 dark:border-emerald-700 px-3 py-1.5 text-sm hover:bg-emerald-50 dark:hover:bg-emerald-900/30"
-            >
-              <Code2 className="size-4" />
-              LeetCode
-            </a>
-            <a
-              href={DATA.links.codechef}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 rounded-lg border border-pink-300 dark:border-pink-700 px-3 py-1.5 text-sm hover:bg-pink-50 dark:hover:bg-pink-900/30"
-            >
-              <Trophy className="size-4" />
-              CodeChef
-            </a>
-          </div>
         </div>
       </div>
     </Section>
   );
 }
+
+
+
 
 function Footer() {
   return (
@@ -475,6 +483,7 @@ export default function Portfolio() {
       <About />
       <Skills />
       <Projects />
+      <Profiles />
       <Contact />
       <Footer />
     </div>
