@@ -13,7 +13,7 @@ const DATA = {
   email: 'pranayreddyedmala@gmail.com',
   links: {
     github: 'https://github.com/pranayreddy-08',
-    linkedin: 'https://www.linkedin.com/in/pranayreddy-edmala-a0355b2b1/',
+    linkedin: 'https://www.linkedin.com/in/pranay-reddy-edmala-a0355b2b1/',
     leetcode: 'https://leetcode.com/u/1by8FRI9TP/',
     codechef: 'https://www.codechef.com/users/pranay3214',
   },
