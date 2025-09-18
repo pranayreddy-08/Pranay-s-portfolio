@@ -25,36 +25,54 @@ const DATA = {
 skills: [
   {
     group: 'Frontend',
-    items: ['HTML','CSS','JavaScript','React','Responsive Web Design','Tailwind CSS','Bootstrap'],
+    items: ['HTML','CSS','React','Tailwind CSS'],
   },
   {
     group: 'Backend',
-    items: ['Node.js','Express.js','REST API Development'],
+    items: ['Node.js','Express.js'],
   },
   {
     group: 'Databases',
-    items: ['MySQL','PostgreSQL','MongoDB'],
+    items: ['MongoDB','PostgreSQL'],
   },
   {
     group: 'Programming',
-    items: ['C','C++','Python'],
+    items: ['C','C++','Python','JavaScript'],
   },
   {
     group: 'Tools',
-    items: ['Git','GitHub','VS Code','Netlify','Vercel'],
+    items: ['GitHub','VS Code','Netlify'],
   },
   {
     group: 'CS Fundamentals',
-    items: ['Data Structures','Algorithms','Object-Oriented Programming (OOPs)','DBMS','Operating Systems','Computer Networks'],
+    items: ['Data Structures & Algorithms','Object-Oriented Programming (OOPs)','DBMS','Operating Systems','Computer Networks'],
   },
 ],
 
   projects: [
     {
-    title: 'VeriHire (In Development)',
-    desc: 'Professional networking platform validating identities and skills to curb fraudulent profiles.',
-    tech: ['React', 'Node.js', 'PostgreSQL'],
-    link: 'https://github.com/pranayreddy-08/Verihire',
+      title: "Pranay's Portfolio ",
+      desc: 'Simple HTML/CSS portfolio — later upgraded to this React version.',
+      tech: ['HTML', 'CSS','JavaScript','React'],
+      link: 'https://github.com/pranayreddy-08/Pranay-s-portfolio',
+    },
+    {
+      title: 'Tic Tac Toe',
+      desc: 'Classic 2-player game with win/draw detection and reset functionality.',
+      tech: ['HTML', 'CSS', 'JavaScript'],
+      link: 'https://github.com/pranayreddy-08/tic-tac-toe',
+    },
+    {
+      title: 'Rock Paper Scissors',
+      desc: 'Simple game against computer with random choice logic and instant results.',
+      tech: ['HTML', 'CSS', 'JavaScript'],
+      link: 'https://github.com/pranayreddy-08/Rock_Paper_Scissors',
+    },
+    {
+      title: 'Quiz App',
+      desc: 'Interactive quiz fetching questions from Open Trivia DB API with timer, scoring, and high score tracking.',
+      tech: ['HTML', 'CSS', 'JavaScript', 'OpenTDB API'],
+      link: 'https://github.com/pranayreddy-08/Quiz-App',
     },
     {
       title: 'Deepfake Detection ',
@@ -63,16 +81,16 @@ skills: [
       link: 'https://github.com/pranayreddy-08/deepfake.detection',
     },
     {
-      title: "Pranay's Portfolio ",
-      desc: 'Simple HTML/CSS portfolio — later upgraded to this React version.',
-      tech: ['HTML', 'CSS','JavaScript','React'],
-      link: 'https://github.com/pranayreddy-08/Pranay-s-portfolio',
-    },
-    {
       title: 'StudySync',
       desc: 'Landing page UI built while practicing modern layouts.',
       tech: ['HTML', 'CSS'],
       link: 'https://github.com/pranayreddy-08/StudySync',
+    },
+    {
+    title: 'VeriHire (In Development)',
+    desc: 'Professional networking platform validating identities and skills to curb fraudulent profiles.',
+    tech: ['React', 'Node.js', 'PostgreSQL'],
+    link: 'https://github.com/pranayreddy-08/Verihire',
     },
   ],
 };
