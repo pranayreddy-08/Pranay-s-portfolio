@@ -14,7 +14,7 @@ const DATA = {
   phone: '+91 7013890597', 
 
   links: {
-    github: 'https://github.com/pranayreddy-08',
+    github:   'https://github.com/VINAYREDDYEDMALA',
     linkedin: 'https://www.linkedin.com/in/pranay-reddy-edmala-a0355b2b1/',
     leetcode: 'https://leetcode.com/u/1by8FRI9TP/',
     codechef: 'https://www.codechef.com/users/pranay3214',
@@ -507,4 +507,4 @@ export default function Portfolio() {
     </div>
   );
 }
-
+  
