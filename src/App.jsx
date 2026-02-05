@@ -16,7 +16,7 @@ const DATA = {
   links: {
     github:   'https://github.com/pranayreddy-08',
     linkedin: 'https://www.linkedin.com/in/pranay-reddy-edmala-a0355b2b1/',
-    leetcode: 'https://leetcode.com/u/1by8FRI9TP/',
+    leetcode: 'https://leetcode.com/u/pranay3214/',
     codechef: 'https://www.codechef.com/users/pranay3214',
     hive: 'https://hive.smartinterviews.in/profile/23241a3214',
     hackerrank: 'https://www.hackerrank.com/profile/23241A3214',
