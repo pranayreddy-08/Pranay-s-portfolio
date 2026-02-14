@@ -1,5 +1,24 @@
-import React, { useState, useEffect } from 'react';
-import { Github, Linkedin, Mail, ExternalLink, Code2, ArrowRight, Menu, X, Trophy, BrainCircuit ,Phone, CodeIcon, Shield, Terminal} from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import {
+  Github,
+  Linkedin,
+  Mail,
+  ExternalLink,
+  Code2,
+  ArrowRight,
+  Menu,
+  X,
+  Trophy,
+  BrainCircuit,
+  Phone,
+  CodeIcon,
+  Shield,
+  Terminal,
+  ChevronLeft,
+  ChevronRight,
+  Database,
+  Wrench,
+} from 'lucide-react';
 
 // ======== EDIT YOUR DATA HERE ========
 const DATA = {
@@ -115,6 +134,15 @@ const groupPillClass = (group) => {
     default:
       return 'bg-indigo-100 text-indigo-700 dark:bg-indigo-900/40 dark:text-indigo-300';
   }
+};
+
+const skillGroupIcon = {
+  Frontend: Code2,
+  Backend: Terminal,
+  Databases: Database,
+  Programming: CodeIcon,
+  Tools: Wrench,
+  'CS Fundamentals': BrainCircuit,
 };
 
 function Nav() {
@@ -291,15 +319,76 @@ function About() {
 
 
 function Skills() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const sliderRef = useRef(null);
+  const totalSlides = DATA.skills.length;
+
+  const scrollToIndex = (nextIndex) => {
+    const slider = sliderRef.current;
+    if (!slider) return;
+
+    const boundedIndex = Math.max(0, Math.min(totalSlides - 1, nextIndex));
+    slider.scrollTo({
+      left: slider.clientWidth * boundedIndex,
+      behavior: 'smooth',
+    });
+    setActiveIndex(boundedIndex);
+  };
+
+  useEffect(() => {
+    const slider = sliderRef.current;
+    if (!slider) return;
+
+    const onScroll = () => {
+      const next = Math.round(slider.scrollLeft / slider.clientWidth);
+      const bounded = Math.max(0, Math.min(totalSlides - 1, next));
+      setActiveIndex(bounded);
+    };
+
+    slider.addEventListener('scroll', onScroll, { passive: true });
+    return () => slider.removeEventListener('scroll', onScroll);
+  }, [totalSlides]);
+
   return (
     <Section id="skills" title="Skills" kicker="Tools & tech">
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="mb-4 hidden md:flex items-center justify-end gap-2">
+        <button
+          type="button"
+          onClick={() => scrollToIndex(activeIndex - 1)}
+          disabled={activeIndex === 0}
+          className="inline-flex size-10 items-center justify-center rounded-full border border-neutral-300 text-neutral-300 hover:border-indigo-400 hover:text-indigo-300 disabled:cursor-not-allowed disabled:opacity-40"
+          aria-label="Previous skills slide"
+        >
+          <ChevronLeft className="size-5" />
+        </button>
+        <button
+          type="button"
+          onClick={() => scrollToIndex(activeIndex + 1)}
+          disabled={activeIndex === totalSlides - 1}
+          className="inline-flex size-10 items-center justify-center rounded-full border border-neutral-300 text-neutral-300 hover:border-indigo-400 hover:text-indigo-300 disabled:cursor-not-allowed disabled:opacity-40"
+          aria-label="Next skills slide"
+        >
+          <ChevronRight className="size-5" />
+        </button>
+      </div>
+
+      <div
+        ref={sliderRef}
+        className="flex snap-x snap-mandatory overflow-x-auto scroll-smooth touch-pan-x [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+      >
         {DATA.skills.map((s) => (
           <div
             key={s.group}
-            className="rounded-xl border border-neutral-200 dark:border-neutral-800 p-5 bg-white/70 dark:bg-neutral-950/40"
+            className="w-full shrink-0 snap-start rounded-xl border border-neutral-200 dark:border-neutral-800 p-5 bg-white/70 dark:bg-neutral-950/40"
           >
-            <h3 className="font-semibold mb-2 text-neutral-800 dark:text-neutral-100">{s.group}</h3>
+            <div className="mb-4 flex items-center gap-3">
+              <span className="inline-flex size-10 items-center justify-center rounded-lg bg-indigo-100 dark:bg-indigo-900/40">
+                {React.createElement(skillGroupIcon[s.group] || Shield, {
+                  className: 'size-5 text-indigo-700 dark:text-indigo-300',
+                })}
+              </span>
+              <h3 className="font-semibold text-neutral-800 dark:text-neutral-100">{s.group}</h3>
+            </div>
             <div className="flex flex-wrap gap-2">
               {s.items.map((it) => (
                 <span
@@ -313,6 +402,20 @@ function Skills() {
               ))}
             </div>
           </div>
+        ))}
+      </div>
+
+      <div className="mt-4 flex items-center justify-center gap-2">
+        {DATA.skills.map((s, idx) => (
+          <button
+            key={s.group}
+            type="button"
+            onClick={() => scrollToIndex(idx)}
+            className={`h-2 rounded-full transition-all ${
+              idx === activeIndex ? 'w-6 bg-indigo-500' : 'w-2 bg-neutral-500/50'
+            }`}
+            aria-label={`Go to ${s.group} slide`}
+          />
         ))}
       </div>
     </Section>
