@@ -217,6 +217,56 @@ const skillDescription = {
   'Computer Networks': 'Communication Protocols',
 };
 
+function VantaBackground() {
+  const vantaRef = useRef(null);
+  const vantaEffectRef = useRef(null);
+
+  useEffect(() => {
+    let isMounted = true;
+
+    const initVanta = async () => {
+      const THREE = await import('three');
+      const NET = (await import('vanta/dist/vanta.net.min')).default;
+
+      if (!isMounted || !vantaRef.current) return;
+
+      if (vantaEffectRef.current) {
+        vantaEffectRef.current.destroy();
+      }
+
+      vantaEffectRef.current = NET({
+        el: vantaRef.current,
+        THREE,
+        mouseControls: true,
+        touchControls: true,
+        gyroControls: false,
+        minHeight: 200,
+        minWidth: 200,
+        scale: 1,
+        scaleMobile: 1,
+        color: 0x0409ab,
+        backgroundColor: 0x15151a,
+        points: 20,
+        maxDistance: 28,
+        spacing: 19,
+        showDots: false,
+      });
+    };
+
+    initVanta();
+
+    return () => {
+      isMounted = false;
+      if (vantaEffectRef.current) {
+        vantaEffectRef.current.destroy();
+        vantaEffectRef.current = null;
+      }
+    };
+  }, []);
+
+  return <div ref={vantaRef} className="fixed inset-0 -z-20" aria-hidden="true" />;
+}
+
 function Nav() {
   const [open, setOpen] = useState(false);
   const navItems = [
@@ -323,8 +373,8 @@ function Section({ id, title, children, kicker }) {
 function Hero() {
   return (
     <div id="home" className="relative overflow-hidden">
-      {/* Full gradient background */}
-      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-indigo-100 via-white to-pink-100 dark:from-indigo-950 dark:via-neutral-950 dark:to-pink-900" />
+      {/* readability overlay above Vanta */}
+      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-black/65 via-black/45 to-black/70" />
 
       <div className="w-screen h-screen flex items-center justify-center">
         <div className="w-full max-w-3xl text-center px-4">
@@ -766,7 +816,8 @@ function Footer() {
 
 export default function Portfolio() {
   return (
-<div className="min-h-dvh bg-black text-neutral-100 selection:bg-rose-600 selection:text-white">
+<div className="relative min-h-dvh bg-transparent text-neutral-100 selection:bg-rose-600 selection:text-white">
+      <VantaBackground />
       <Nav />
       <Hero />
       <About />
