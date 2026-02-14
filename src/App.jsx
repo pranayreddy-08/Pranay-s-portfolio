@@ -11,14 +11,35 @@ import {
   Trophy,
   BrainCircuit,
   Phone,
-  CodeIcon,
   Shield,
   Terminal,
   ChevronLeft,
   ChevronRight,
   Database,
-  Wrench,
 } from 'lucide-react';
+import {
+  SiCplusplus,
+  SiCss3,
+  SiDocker,
+  SiExpress,
+  SiGit,
+  SiGithub,
+  SiHtml5,
+  SiJavascript,
+  SiLinux,
+  SiMongodb,
+  SiMysql,
+  SiNextdotjs,
+  SiNodedotjs,
+  SiNumpy,
+  SiPandas,
+  SiPostgresql,
+  SiPython,
+  SiReact,
+  SiTailwindcss,
+  SiTensorflow,
+  SiVercel,
+} from 'react-icons/si';
 
 // ======== EDIT YOUR DATA HERE ========
 const DATA = {
@@ -44,27 +65,31 @@ const DATA = {
 skills: [
   {
     group: 'Frontend',
-    items: ['HTML','CSS','React','Tailwind CSS'],
+    items: ['HTML', 'CSS', 'JavaScript', 'React.js', 'Next.js', 'Tailwind CSS'],
   },
   {
     group: 'Backend',
-    items: ['Node.js','Express.js'],
+    items: ['Node.js', 'Express.js', 'REST APIs', 'API Integration'],
   },
   {
     group: 'Databases',
-    items: ['MySQL','MongoDB','PostgreSQL'],
+    items: ['SQL', 'MySQL', 'PostgreSQL', 'MongoDB', 'DBMS'],
   },
   {
     group: 'Programming',
-    items: ['C','C++','Python','JavaScript'],
+    items: ['Python', 'C/C++', 'Data Structures & Algorithms', 'Object-Oriented Programming'],
   },
   {
-    group: 'Tools',
-    items: ['GitHub','VS Code','Netlify'],
+    group: 'DevOps & Tools',
+    items: ['Git', 'GitHub', 'Docker', 'Linux Basics', 'Web Deployment (Netlify/Vercel)'],
   },
   {
-    group: 'CS Fundamentals',
-    items: ['Data Structures & Algorithms','Object-Oriented Programming (OOPs)','DBMS','Operating Systems','Computer Networks'],
+    group: 'AI/ML',
+    items: ['Machine Learning Fundamentals', 'NumPy', 'Pandas', 'TensorFlow', 'AI Agents', 'LLM Applications'],
+  },
+  {
+    group: 'Core CS',
+    items: ['System Design Basics', 'Operating Systems', 'Computer Networks'],
   },
 ],
 
@@ -120,29 +145,76 @@ const Container = ({ children }) => (
   <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">{children}</div>
 );
 
-// Color helpers
-const groupPillClass = (group) => {
-  switch (group) {
-    case 'Frontend':
-      return 'bg-pink-100 text-pink-700 dark:bg-pink-900/40 dark:text-pink-300';
-    case 'Programming':
-      return 'bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300';
-    case 'Tools':
-      return 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300';
-    case 'CS Fundamentals':
-      return 'bg-violet-100 text-violet-700 dark:bg-violet-900/40 dark:text-violet-300';
-    default:
-      return 'bg-indigo-100 text-indigo-700 dark:bg-indigo-900/40 dark:text-indigo-300';
-  }
+const skillMeta = {
+  HTML: { Icon: SiHtml5, iconClass: 'text-orange-500', glowClass: 'from-orange-500/30 to-orange-500/5' },
+  CSS: { Icon: SiCss3, iconClass: 'text-sky-500', glowClass: 'from-sky-500/30 to-sky-500/5' },
+  JavaScript: { Icon: SiJavascript, iconClass: 'text-yellow-400', glowClass: 'from-yellow-500/30 to-yellow-500/5' },
+  'React.js': { Icon: SiReact, iconClass: 'text-cyan-400', glowClass: 'from-cyan-500/30 to-cyan-500/5' },
+  'Next.js': { Icon: SiNextdotjs, iconClass: 'text-neutral-100', glowClass: 'from-neutral-500/30 to-neutral-500/5' },
+  'Tailwind CSS': { Icon: SiTailwindcss, iconClass: 'text-cyan-300', glowClass: 'from-teal-500/30 to-teal-500/5' },
+  'Node.js': { Icon: SiNodedotjs, iconClass: 'text-lime-400', glowClass: 'from-lime-500/30 to-lime-500/5' },
+  'Express.js': { Icon: SiExpress, iconClass: 'text-neutral-200', glowClass: 'from-neutral-500/30 to-neutral-500/5' },
+  'REST APIs': { Icon: Terminal, iconClass: 'text-cyan-300', glowClass: 'from-cyan-500/30 to-cyan-500/5' },
+  'API Integration': { Icon: Terminal, iconClass: 'text-sky-300', glowClass: 'from-sky-500/30 to-sky-500/5' },
+  SQL: { Icon: Database, iconClass: 'text-indigo-300', glowClass: 'from-indigo-500/30 to-indigo-500/5' },
+  MySQL: { Icon: SiMysql, iconClass: 'text-blue-300', glowClass: 'from-blue-500/30 to-blue-500/5' },
+  MongoDB: { Icon: SiMongodb, iconClass: 'text-green-400', glowClass: 'from-green-500/30 to-green-500/5' },
+  PostgreSQL: { Icon: SiPostgresql, iconClass: 'text-indigo-300', glowClass: 'from-indigo-500/30 to-indigo-500/5' },
+  'C/C++': { Icon: SiCplusplus, iconClass: 'text-blue-300', glowClass: 'from-blue-500/30 to-blue-500/5' },
+  Python: { Icon: SiPython, iconClass: 'text-yellow-300', glowClass: 'from-yellow-500/30 to-yellow-500/5' },
+  'Data Structures & Algorithms': { Icon: BrainCircuit, iconClass: 'text-violet-300', glowClass: 'from-violet-500/30 to-violet-500/5' },
+  'Object-Oriented Programming': { Icon: Code2, iconClass: 'text-fuchsia-300', glowClass: 'from-fuchsia-500/30 to-fuchsia-500/5' },
+  Git: { Icon: SiGit, iconClass: 'text-orange-400', glowClass: 'from-orange-500/30 to-orange-500/5' },
+  GitHub: { Icon: SiGithub, iconClass: 'text-neutral-100', glowClass: 'from-neutral-500/30 to-neutral-500/5' },
+  Docker: { Icon: SiDocker, iconClass: 'text-sky-400', glowClass: 'from-sky-500/30 to-sky-500/5' },
+  'Linux Basics': { Icon: SiLinux, iconClass: 'text-yellow-200', glowClass: 'from-yellow-500/30 to-yellow-500/5' },
+  'Web Deployment (Netlify/Vercel)': { Icon: SiVercel, iconClass: 'text-neutral-100', glowClass: 'from-emerald-500/30 to-emerald-500/5' },
+  'Machine Learning Fundamentals': { Icon: BrainCircuit, iconClass: 'text-pink-300', glowClass: 'from-pink-500/30 to-pink-500/5' },
+  NumPy: { Icon: SiNumpy, iconClass: 'text-blue-300', glowClass: 'from-blue-500/30 to-blue-500/5' },
+  Pandas: { Icon: SiPandas, iconClass: 'text-violet-300', glowClass: 'from-violet-500/30 to-violet-500/5' },
+  TensorFlow: { Icon: SiTensorflow, iconClass: 'text-orange-400', glowClass: 'from-orange-500/30 to-orange-500/5' },
+  'AI Agents': { Icon: BrainCircuit, iconClass: 'text-fuchsia-300', glowClass: 'from-fuchsia-500/30 to-fuchsia-500/5' },
+  'LLM Applications': { Icon: BrainCircuit, iconClass: 'text-purple-300', glowClass: 'from-purple-500/30 to-purple-500/5' },
+  'System Design Basics': { Icon: Shield, iconClass: 'text-cyan-300', glowClass: 'from-cyan-500/30 to-cyan-500/5' },
+  DBMS: { Icon: Database, iconClass: 'text-indigo-300', glowClass: 'from-indigo-500/30 to-indigo-500/5' },
+  'Operating Systems': { Icon: Terminal, iconClass: 'text-cyan-300', glowClass: 'from-cyan-500/30 to-cyan-500/5' },
+  'Computer Networks': { Icon: Shield, iconClass: 'text-purple-300', glowClass: 'from-purple-500/30 to-purple-500/5' },
 };
 
-const skillGroupIcon = {
-  Frontend: Code2,
-  Backend: Terminal,
-  Databases: Database,
-  Programming: CodeIcon,
-  Tools: Wrench,
-  'CS Fundamentals': BrainCircuit,
+const skillDescription = {
+  HTML: 'Markup Language',
+  CSS: 'Styling & Layout',
+  JavaScript: 'Web Development Language',
+  'React.js': 'UI Library',
+  'Next.js': 'React Framework',
+  'Tailwind CSS': 'Utility-First CSS',
+  'Node.js': 'JavaScript Runtime',
+  'Express.js': 'Backend Framework',
+  'REST APIs': 'Service Architecture',
+  'API Integration': 'Connecting Services',
+  SQL: 'Structured Query Language',
+  MySQL: 'Relational Database',
+  PostgreSQL: 'Advanced Relational DB',
+  MongoDB: 'NoSQL Database',
+  DBMS: 'Database Management',
+  Python: 'Versatile Programming Language',
+  'C/C++': 'High-Performance Development',
+  'Data Structures & Algorithms': 'Problem Solving',
+  'Object-Oriented Programming': 'Software Design Paradigm',
+  Git: 'Version Control',
+  GitHub: 'Code Collaboration',
+  Docker: 'Containerization',
+  'Linux Basics': 'System Fundamentals',
+  'Web Deployment (Netlify/Vercel)': 'Production Hosting',
+  'Machine Learning Fundamentals': 'Modeling Basics',
+  NumPy: 'Numerical Computing',
+  Pandas: 'Data Analysis',
+  TensorFlow: 'Deep Learning Framework',
+  'AI Agents': 'Autonomous Workflows',
+  'LLM Applications': 'GenAI Product Building',
+  'System Design Basics': 'Scalable Architecture',
+  'Operating Systems': 'Core CS Foundation',
+  'Computer Networks': 'Communication Protocols',
 };
 
 function Nav() {
@@ -319,102 +391,199 @@ function About() {
 
 
 function Skills() {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const sliderRef = useRef(null);
-  const totalSlides = DATA.skills.length;
-
-  const scrollToIndex = (nextIndex) => {
-    const slider = sliderRef.current;
-    if (!slider) return;
-
-    const boundedIndex = Math.max(0, Math.min(totalSlides - 1, nextIndex));
-    slider.scrollTo({
-      left: slider.clientWidth * boundedIndex,
-      behavior: 'smooth',
-    });
-    setActiveIndex(boundedIndex);
-  };
+  const skills = DATA.skills.flatMap((groupBlock) =>
+    groupBlock.items.map((item) => ({ name: item, group: groupBlock.group }))
+  );
+  const totalSkills = skills.length;
+  const [cardsPerView, setCardsPerView] = useState(1);
+  const [trackIndex, setTrackIndex] = useState(1);
+  const [isAnimating, setIsAnimating] = useState(true);
+  const [isPaused, setIsPaused] = useState(false);
+  const touchStartXRef = useRef(null);
 
   useEffect(() => {
-    const slider = sliderRef.current;
-    if (!slider) return;
-
-    const onScroll = () => {
-      const next = Math.round(slider.scrollLeft / slider.clientWidth);
-      const bounded = Math.max(0, Math.min(totalSlides - 1, next));
-      setActiveIndex(bounded);
+    const setVisibleCards = () => {
+      if (window.innerWidth >= 1024) {
+        setCardsPerView(3);
+        return;
+      }
+      if (window.innerWidth >= 640) {
+        setCardsPerView(2);
+        return;
+      }
+      setCardsPerView(1);
     };
 
-    slider.addEventListener('scroll', onScroll, { passive: true });
-    return () => slider.removeEventListener('scroll', onScroll);
-  }, [totalSlides]);
+    setVisibleCards();
+    window.addEventListener('resize', setVisibleCards);
+    return () => window.removeEventListener('resize', setVisibleCards);
+  }, []);
+
+  const loopEnabled = totalSkills > cardsPerView;
+  const visibleCards = loopEnabled ? cardsPerView : totalSkills;
+  const trackSkills = loopEnabled
+    ? [...skills.slice(-visibleCards), ...skills, ...skills.slice(0, visibleCards)]
+    : skills;
+
+  useEffect(() => {
+    setIsAnimating(false);
+    setTrackIndex(loopEnabled ? visibleCards : 0);
+  }, [loopEnabled, visibleCards]);
+
+  useEffect(() => {
+    if (isAnimating) return;
+    const rafId = window.requestAnimationFrame(() => setIsAnimating(true));
+    return () => window.cancelAnimationFrame(rafId);
+  }, [isAnimating]);
+
+  useEffect(() => {
+    if (!loopEnabled || isPaused) return;
+    const intervalId = window.setInterval(() => {
+      setTrackIndex((prev) => prev + 1);
+    }, 2800);
+
+    return () => window.clearInterval(intervalId);
+  }, [isPaused, loopEnabled]);
+
+  const goPrev = () => {
+    if (!loopEnabled) return;
+    setTrackIndex((prev) => prev - 1);
+  };
+
+  const goNext = () => {
+    if (!loopEnabled) return;
+    setTrackIndex((prev) => prev + 1);
+  };
+
+  const handleTrackTransitionEnd = () => {
+    if (!loopEnabled) return;
+
+    if (trackIndex >= totalSkills + visibleCards) {
+      setIsAnimating(false);
+      setTrackIndex(visibleCards);
+      return;
+    }
+
+    if (trackIndex < visibleCards) {
+      setIsAnimating(false);
+      setTrackIndex(totalSkills + trackIndex);
+    }
+  };
+
+  const currentLogicalIndex = loopEnabled
+    ? ((trackIndex - visibleCards) % totalSkills + totalSkills) % totalSkills
+    : 0;
+  const currentSkill = skills[currentLogicalIndex];
+  const translatePercent = visibleCards > 0 ? 100 / visibleCards : 100;
+
+  const handleTouchStart = (event) => {
+    touchStartXRef.current = event.changedTouches[0].clientX;
+    setIsPaused(true);
+  };
+
+  const handleTouchEnd = (event) => {
+    if (touchStartXRef.current === null) return;
+    const distance = event.changedTouches[0].clientX - touchStartXRef.current;
+    if (Math.abs(distance) > 40) {
+      if (distance > 0) goPrev();
+      if (distance < 0) goNext();
+    }
+    touchStartXRef.current = null;
+    setIsPaused(false);
+  };
 
   return (
-    <Section id="skills" title="Skills" kicker="Tools & tech">
-      <div className="mb-4 hidden md:flex items-center justify-end gap-2">
+    <Section id="skills" title="My Skills" kicker="Technologies I work with">
+      <p className="mb-6 text-center text-base text-neutral-400 sm:text-lg">
+        Here are some of the technologies I work with.
+      </p>
+
+      <div className="relative px-2 sm:px-12">
+        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 hidden w-16 bg-gradient-to-r from-black to-transparent sm:block" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 hidden w-16 bg-gradient-to-l from-black to-transparent sm:block" />
+
         <button
           type="button"
-          onClick={() => scrollToIndex(activeIndex - 1)}
-          disabled={activeIndex === 0}
-          className="inline-flex size-10 items-center justify-center rounded-full border border-neutral-300 text-neutral-300 hover:border-indigo-400 hover:text-indigo-300 disabled:cursor-not-allowed disabled:opacity-40"
+          onClick={goPrev}
+          disabled={!loopEnabled}
+          className="absolute left-0 top-1/2 z-20 hidden size-12 -translate-y-1/2 items-center justify-center rounded-2xl border border-white/15 bg-white/10 text-white backdrop-blur-sm transition hover:bg-white/20 disabled:cursor-not-allowed disabled:opacity-40 sm:inline-flex"
           aria-label="Previous skills slide"
         >
-          <ChevronLeft className="size-5" />
+          <ChevronLeft className="size-6" />
         </button>
+
         <button
           type="button"
-          onClick={() => scrollToIndex(activeIndex + 1)}
-          disabled={activeIndex === totalSlides - 1}
-          className="inline-flex size-10 items-center justify-center rounded-full border border-neutral-300 text-neutral-300 hover:border-indigo-400 hover:text-indigo-300 disabled:cursor-not-allowed disabled:opacity-40"
+          onClick={goNext}
+          disabled={!loopEnabled}
+          className="absolute right-0 top-1/2 z-20 hidden size-12 -translate-y-1/2 items-center justify-center rounded-2xl border border-white/15 bg-white/10 text-white backdrop-blur-sm transition hover:bg-white/20 disabled:cursor-not-allowed disabled:opacity-40 sm:inline-flex"
           aria-label="Next skills slide"
         >
-          <ChevronRight className="size-5" />
+          <ChevronRight className="size-6" />
         </button>
-      </div>
 
-      <div
-        ref={sliderRef}
-        className="flex snap-x snap-mandatory overflow-x-auto scroll-smooth touch-pan-x [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
-      >
-        {DATA.skills.map((s) => (
+        <div
+          className="relative overflow-hidden rounded-[26px] border border-white/10 bg-[#0b1022]/80"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+        >
           <div
-            key={s.group}
-            className="w-full shrink-0 snap-start rounded-xl border border-neutral-200 dark:border-neutral-800 p-5 bg-white/70 dark:bg-neutral-950/40"
+            className={`flex ${isAnimating ? 'transition-transform duration-500 ease-in-out' : ''}`}
+            onTransitionEnd={handleTrackTransitionEnd}
+            style={{ transform: `translateX(-${trackIndex * translatePercent}%)` }}
           >
-            <div className="mb-4 flex items-center gap-3">
-              <span className="inline-flex size-10 items-center justify-center rounded-lg bg-indigo-100 dark:bg-indigo-900/40">
-                {React.createElement(skillGroupIcon[s.group] || Shield, {
-                  className: 'size-5 text-indigo-700 dark:text-indigo-300',
-                })}
-              </span>
-              <h3 className="font-semibold text-neutral-800 dark:text-neutral-100">{s.group}</h3>
-            </div>
-            <div className="flex flex-wrap gap-2">
-              {s.items.map((it) => (
-                <span
-                  key={it}
-                  className={`inline-flex items-center rounded-full px-3 py-1 text-xs font-medium ${groupPillClass(
-                    s.group
-                  )}`}
+            {trackSkills.map((skill, idx) => {
+              const meta = skillMeta[skill.name] || {
+                Icon: Code2,
+                iconClass: 'text-indigo-300',
+                glowClass: 'from-indigo-500/30 to-indigo-500/5',
+              };
+
+              return (
+                <div
+                  key={`${skill.name}-${idx}`}
+                  className="shrink-0 p-2 sm:p-4"
+                  style={{ width: `${translatePercent}%` }}
                 >
-                  {it}
-                </span>
-              ))}
-            </div>
+                  <article className="h-full rounded-3xl border border-white/10 bg-gradient-to-br from-[#111a3d] via-[#121b45] to-[#0a1e4a] p-6 text-center shadow-[0_18px_45px_-24px_rgba(59,130,246,0.75)]">
+                    <div className="mb-6 flex justify-center">
+                      <span className={`inline-flex rounded-2xl bg-gradient-to-br p-4 ${meta.glowClass}`}>
+                        <meta.Icon className={`size-12 ${meta.iconClass}`} />
+                      </span>
+                    </div>
+
+                    <h3 className="text-2xl font-bold text-white">{skill.name}</h3>
+                    <div className="mx-auto mt-4 h-px w-full max-w-[220px] bg-white/20" />
+                    <p className="mt-4 text-lg leading-snug text-neutral-200">
+                      {skillDescription[skill.name] || 'Technology & Development Skill'}
+                    </p>
+                  </article>
+                </div>
+              );
+            })}
           </div>
-        ))}
+        </div>
       </div>
 
       <div className="mt-4 flex items-center justify-center gap-2">
-        {DATA.skills.map((s, idx) => (
+        <p className="text-xs text-neutral-400 sm:text-sm">Swipe on mobile. Use arrows on desktop.</p>
+      </div>
+
+      <div className="mt-4 flex items-center justify-center gap-1.5">
+        {skills.map((skill, idx) => (
           <button
-            key={s.group}
+            key={`${skill.name}-dot`}
             type="button"
-            onClick={() => scrollToIndex(idx)}
-            className={`h-2 rounded-full transition-all ${
-              idx === activeIndex ? 'w-6 bg-indigo-500' : 'w-2 bg-neutral-500/50'
+            onClick={() => {
+              if (!loopEnabled) return;
+              setTrackIndex(visibleCards + idx);
+            }}
+            className={`h-1.5 rounded-full transition-all ${
+              idx === currentLogicalIndex ? 'w-6 bg-indigo-500' : 'w-2 bg-neutral-500/50'
             }`}
-            aria-label={`Go to ${s.group} slide`}
+            aria-label={`Go to ${skill.name} slide`}
           />
         ))}
       </div>
@@ -453,7 +622,6 @@ function Projects() {
             </div>
           </a>
         ))}
-
       </div>
     </Section>
   );
