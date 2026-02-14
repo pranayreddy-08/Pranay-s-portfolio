@@ -33,7 +33,7 @@ skills: [
   },
   {
     group: 'Databases',
-    items: ['MongoDB','PostgreSQL'],
+    items: ['MySQL','MongoDB','PostgreSQL'],
   },
   {
     group: 'Programming',
