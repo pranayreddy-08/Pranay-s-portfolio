@@ -217,6 +217,136 @@ const skillDescription = {
   'Computer Networks': 'Communication Protocols',
 };
 
+function AnimatedCanvasBackground() {
+  const canvasRef = useRef(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    const state = {
+      width: 0,
+      height: 0,
+      dpr: Math.min(window.devicePixelRatio || 1, 2),
+      time: 0,
+      raf: null,
+      particles: [],
+    };
+
+    const createParticles = () => {
+      const area = state.width * state.height;
+      const count = Math.max(40, Math.min(90, Math.floor(area / 24000)));
+      state.particles = Array.from({ length: count }, () => ({
+        x: Math.random() * state.width,
+        y: Math.random() * state.height,
+        vx: (Math.random() - 0.5) * 0.28,
+        vy: (Math.random() - 0.5) * 0.28,
+        r: 1 + Math.random() * 1.8,
+      }));
+    };
+
+    const resize = () => {
+      state.width = window.innerWidth;
+      state.height = window.innerHeight;
+      state.dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+      canvas.width = Math.floor(state.width * state.dpr);
+      canvas.height = Math.floor(state.height * state.dpr);
+      canvas.style.width = `${state.width}px`;
+      canvas.style.height = `${state.height}px`;
+      ctx.setTransform(state.dpr, 0, 0, state.dpr, 0, 0);
+      createParticles();
+    };
+
+    const drawGlow = () => {
+      const g1x = state.width * (0.25 + Math.sin(state.time * 0.23) * 0.05);
+      const g1y = state.height * (0.25 + Math.cos(state.time * 0.2) * 0.06);
+      const g2x = state.width * (0.75 + Math.cos(state.time * 0.18) * 0.05);
+      const g2y = state.height * (0.75 + Math.sin(state.time * 0.24) * 0.05);
+
+      const glow1 = ctx.createRadialGradient(g1x, g1y, 0, g1x, g1y, Math.max(state.width, state.height) * 0.45);
+      glow1.addColorStop(0, 'rgba(59, 130, 246, 0.14)');
+      glow1.addColorStop(1, 'rgba(59, 130, 246, 0)');
+      ctx.fillStyle = glow1;
+      ctx.fillRect(0, 0, state.width, state.height);
+
+      const glow2 = ctx.createRadialGradient(g2x, g2y, 0, g2x, g2y, Math.max(state.width, state.height) * 0.4);
+      glow2.addColorStop(0, 'rgba(30, 64, 175, 0.12)');
+      glow2.addColorStop(1, 'rgba(30, 64, 175, 0)');
+      ctx.fillStyle = glow2;
+      ctx.fillRect(0, 0, state.width, state.height);
+    };
+
+    const drawNetwork = () => {
+      const maxDist = 150;
+
+      for (let i = 0; i < state.particles.length; i += 1) {
+        const p1 = state.particles[i];
+
+        for (let j = i + 1; j < state.particles.length; j += 1) {
+          const p2 = state.particles[j];
+          const dx = p1.x - p2.x;
+          const dy = p1.y - p2.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist > maxDist) continue;
+
+          const alpha = (1 - dist / maxDist) * 0.35;
+          ctx.beginPath();
+          ctx.moveTo(p1.x, p1.y);
+          ctx.lineTo(p2.x, p2.y);
+          ctx.strokeStyle = `rgba(59,130,246,${alpha.toFixed(3)})`;
+          ctx.lineWidth = 1;
+          ctx.stroke();
+        }
+      }
+
+      for (const particle of state.particles) {
+        ctx.beginPath();
+        ctx.arc(particle.x, particle.y, particle.r, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(147, 197, 253, 0.75)';
+        ctx.fill();
+
+        particle.x += particle.vx + Math.sin(state.time * 0.55 + particle.y * 0.01) * 0.12;
+        particle.y += particle.vy + Math.cos(state.time * 0.45 + particle.x * 0.01) * 0.12;
+
+        if (particle.x < -20) particle.x = state.width + 20;
+        if (particle.x > state.width + 20) particle.x = -20;
+        if (particle.y < -20) particle.y = state.height + 20;
+        if (particle.y > state.height + 20) particle.y = -20;
+      }
+    };
+
+    const render = () => {
+      state.time += 0.016;
+
+      const bg = ctx.createLinearGradient(0, 0, 0, state.height);
+      bg.addColorStop(0, '#00030a');
+      bg.addColorStop(1, '#020617');
+      ctx.fillStyle = bg;
+      ctx.fillRect(0, 0, state.width, state.height);
+
+      drawGlow();
+      drawNetwork();
+
+      state.raf = window.requestAnimationFrame(render);
+    };
+
+    resize();
+    render();
+    window.addEventListener('resize', resize);
+
+    return () => {
+      window.removeEventListener('resize', resize);
+      if (state.raf) window.cancelAnimationFrame(state.raf);
+    };
+  }, []);
+
+  return <canvas ref={canvasRef} className="fixed inset-0 z-0" aria-hidden="true" />;
+}
+
 function Nav() {
   const [open, setOpen] = useState(false);
   const navItems = [
@@ -323,9 +453,6 @@ function Section({ id, title, children, kicker }) {
 function Hero() {
   return (
     <div id="home" className="relative overflow-hidden">
-      {/* Full gradient background */}
-      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-indigo-100 via-white to-pink-100 dark:from-indigo-950 dark:via-neutral-950 dark:to-pink-900" />
-
       <div className="w-screen h-screen flex items-center justify-center">
         <div className="w-full max-w-3xl text-center px-4">
           <h1 className="text-3xl sm:text-4xl lg:text-[42px] font-extrabold leading-[1.15] tracking-tight">
@@ -342,7 +469,7 @@ function Hero() {
           {/* Download CV button */}
           <div className="mt-5">
             <a
-              href="/Pranay_resume (12).pdf"
+              href="/pranay_resume.pdf"
               download
               className="inline-flex items-center gap-2 rounded-lg px-6 py-2 text-sm font-medium 
                          bg-indigo-600 text-white 
@@ -362,33 +489,35 @@ function About() {
     <Section id="about" title="About" kicker="Get to know me">
       <div className="max-w-6xl mx-auto text-left">
         <p className="text-[15px] leading-7 mb-4">
-          I’m a 3rd-year Computer Science undergraduate at GRIET with a deep interest in
-          full-stack web development, AI/ML, and competitive programming. My journey so far
-          has been about combining strong problem-solving skills with a passion for building
-          clean and functional applications. I enjoy exploring new technologies and applying
-          them to create real-world solutions.
+          I&apos;m a 3rd-year Computer Science undergraduate at GRIET, passionate about building
+          scalable, user-focused web applications and solving real-world problems through clean
+          and efficient code.
         </p>
 
         <p className="text-[15px] leading-7 mb-4">
-          On the development side, I specialize in crafting responsive UIs using React and
-          Tailwind CSS, while also building scalable back-end services with Node.js and
-          Express. Beyond development, I regularly practice Data Structures and Algorithms
-          to sharpen my logic and ensure efficiency in the solutions I design. These skills
-          not only help me in competitive programming but also in writing optimized code for
-          projects.
+          Over the past year, I&apos;ve strengthened my full-stack development skills by building
+          and deploying production-ready projects. My core stack includes React.js, Next.js,
+          Tailwind CSS, Node.js, Express.js, REST APIs, SQL (MySQL/PostgreSQL), and MongoDB.
+          I&apos;m also comfortable with Git, GitHub, Docker, Linux fundamentals, and deployment
+          platforms like Netlify and Vercel, which help me ship reliable applications efficiently.
+        </p>
+
+        <p className="text-[15px] leading-7 mb-4">
+          Beyond development, I actively practice Data Structures & Algorithms and have a strong
+          foundation in OOP, DBMS, Operating Systems, and Computer Networks. I&apos;m also exploring
+          AI/ML fundamentals, working with NumPy, Pandas, TensorFlow, and LLM-based applications
+          to understand intelligent system design.
         </p>
 
         <p className="text-[15px] leading-7">
-          In the short term, I am actively seeking internships and collaborative projects
-          where I can contribute to impactful work and learn from experienced teams. Looking
-          ahead, my long-term vision is to design scalable products that balance performance
-          with great user experience, while continuing to grow as a versatile engineer.
+          I&apos;m currently seeking internship and collaboration opportunities where I can contribute
+          to impactful products, learn from experienced engineers, and grow into a well-rounded
+          software developer.
         </p>
       </div>
     </Section>
   );
 }
-
 
 function Skills() {
   const skills = DATA.skills.flatMap((groupBlock) =>
@@ -766,15 +895,19 @@ function Footer() {
 
 export default function Portfolio() {
   return (
-<div className="min-h-dvh bg-black text-neutral-100 selection:bg-rose-600 selection:text-white">
-      <Nav />
-      <Hero />
-      <About />
-      <Skills />
-      <Projects />
-      <Profiles />
-      <Contact />
-      <Footer />
+<div className="relative min-h-dvh bg-black text-neutral-100 selection:bg-rose-600 selection:text-white">
+      <AnimatedCanvasBackground />
+      <div className="pointer-events-none fixed inset-0 z-10 bg-black/0" aria-hidden="true" />
+      <div className="relative z-20">
+        <Nav />
+        <Hero />
+        <About />
+        <Skills />
+        <Projects />
+        <Profiles />
+        <Contact />
+        <Footer />
+      </div>
     </div>
   );
 }
