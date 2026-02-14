@@ -95,8 +95,14 @@ skills: [
 
   projects: [
     {
+      title:"CrisisCommand",
+      desc:"An AI-powered crisis management platform that aggregates real-time data, provides predictive analytics, and facilitates coordinated response efforts during emergencies.",
+      tech: ['React', 'Node.js', 'Python', 'TensorFlow', 'Fast API','Docker','Agentic AI','LLM Applications'],
+      link: "https://github.com/pranayreddy-08/CrisisCommand",
+    },
+    {
       title: "Pranay's Portfolio ",
-      desc: 'Simple HTML/CSS portfolio — later upgraded to this React version.',
+      desc: 'Simple personal portfolio website showcasing projects and skills, built with React and Tailwind CSS.',
       tech: ['HTML', 'CSS','JavaScript','React'],
       link: 'https://github.com/pranayreddy-08/Pranay-s-portfolio',
     },
@@ -121,7 +127,7 @@ skills: [
     {
       title: 'Deepfake Detection ',
       desc: 'Exploratory project on detecting AI-generated media (images/videos).',
-      tech: ['Python'],
+      tech: ['Python', 'Machine Learning', 'TensorFlow'],
       link: 'https://github.com/pranayreddy-08/deepfake.detection',
     },
     {
@@ -129,12 +135,6 @@ skills: [
       desc: 'Landing page UI built while practicing modern layouts.',
       tech: ['HTML', 'CSS'],
       link: 'https://github.com/pranayreddy-08/StudySync',
-    },
-    {
-    title: 'VeriHire (In Development)',
-    desc: 'Professional networking platform validating identities and skills to curb fraudulent profiles.',
-    tech: ['React', 'Node.js', 'PostgreSQL'],
-    link: 'https://github.com/pranayreddy-08/Verihire',
     },
   ],
 };
