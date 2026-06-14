@@ -101,6 +101,24 @@ skills: [
       link: "https://github.com/pranayreddy-08/CrisisCommand",
     },
     {
+      title: 'CarZone',
+      desc: 'Full-stack car marketplace platform where users can list vehicles for sale, browse approved listings, search with advanced filters, and send inquiries. Includes an admin approval workflow, user dashboard, featured listings, image uploads, and authentication system.',
+      tech: [
+        'Python',
+        'Django',
+        'SQLite',
+        'PostgreSQL',
+        'HTML',
+        'CSS',
+        'Bootstrap',
+        'JavaScript',
+        'jQuery',
+        'django-ckeditor',
+        'Pillow'
+      ],
+      link: 'https://github.com/pranayreddy-08/Pranay-s-portfolio',
+    },
+    {
       title: "Pranay's Portfolio ",
       desc: 'Simple personal portfolio website showcasing projects and skills, built with React and Tailwind CSS.',
       tech: ['HTML', 'CSS','JavaScript','React'],
