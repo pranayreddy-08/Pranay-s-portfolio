@@ -116,7 +116,7 @@ skills: [
         'django-ckeditor',
         'Pillow'
       ],
-      link: 'https://github.com/pranayreddy-08/Pranay-s-portfolio',
+      link: 'https://github.com/pranayreddy-08/carzone',
     },
     {
       title: "Pranay's Portfolio ",
