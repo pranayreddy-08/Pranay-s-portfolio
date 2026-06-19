@@ -16,6 +16,7 @@ import {
   ChevronLeft,
   ChevronRight,
   Database,
+  Award,
 } from 'lucide-react';
 import {
   SiCplusplus,
@@ -92,6 +93,41 @@ skills: [
     items: ['System Design Basics', 'Operating Systems', 'Computer Networks'],
   },
 ],
+
+  certificates: [
+    {
+      title: 'Smart Coder',
+      issuer: 'Smart Interviews',
+      category: 'Data Structures, Algorithms & Competitive Programming',
+      link: 'https://smartinterviews.in/certificate/0e0db720',
+      color: 'indigo',
+      Icon: BrainCircuit,
+    },
+    {
+      title: 'Problem Solving (Intermediate)',
+      issuer: 'HackerRank',
+      category: 'Problem Solving',
+      link: 'https://www.hackerrank.com/certificates/23e1b6bb20e1',
+      color: 'emerald',
+      Icon: Terminal,
+    },
+    {
+      title: 'SQL (Intermediate)',
+      issuer: 'HackerRank',
+      category: 'SQL & Databases',
+      link: 'https://www.hackerrank.com/certificates/86a11b54ad73',
+      color: 'violet',
+      Icon: Database,
+    },
+    {
+      title: 'Python Essentials 1',
+      issuer: 'Cisco',
+      category: 'Python Programming',
+      link: 'https://www.credly.com/badges/6137183c-9ded-4853-82b5-27319caa1893/public_url',
+      color: 'amber',
+      Icon: Code2,
+    },
+  ],
 
   projects: [
     {
@@ -372,7 +408,8 @@ function Nav() {
     { href: '#about', label: 'About' },
     { href: '#skills', label: 'Skills' },
     { href: '#projects', label: 'Projects' },
-    { href: '#profiles', label: 'Profiles' },  
+    { href: '#profiles', label: 'Profiles' },
+    { href: '#certificates', label: 'Certificates' },
     { href: '#contact', label: 'Contact' },
   ];
 
@@ -823,6 +860,68 @@ function Profiles() {
 }
 
 
+const colorMap = {
+  indigo: {
+    bg: 'bg-indigo-100 dark:bg-indigo-900/40',
+    icon: 'text-indigo-700 dark:text-indigo-300',
+    badge: 'bg-indigo-100 text-indigo-700 dark:bg-indigo-900/40 dark:text-indigo-300',
+    glow: 'hover:shadow-indigo-500/20',
+  },
+  emerald: {
+    bg: 'bg-emerald-100 dark:bg-emerald-900/40',
+    icon: 'text-emerald-700 dark:text-emerald-300',
+    badge: 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300',
+    glow: 'hover:shadow-emerald-500/20',
+  },
+  violet: {
+    bg: 'bg-violet-100 dark:bg-violet-900/40',
+    icon: 'text-violet-700 dark:text-violet-300',
+    badge: 'bg-violet-100 text-violet-700 dark:bg-violet-900/40 dark:text-violet-300',
+    glow: 'hover:shadow-violet-500/20',
+  },
+  amber: {
+    bg: 'bg-amber-100 dark:bg-amber-900/40',
+    icon: 'text-amber-700 dark:text-amber-300',
+    badge: 'bg-amber-100 text-amber-700 dark:bg-amber-900/40 dark:text-amber-300',
+    glow: 'hover:shadow-amber-500/20',
+  },
+};
+
+function Certificates() {
+  return (
+    <Section id="certificates" title="Certificates" kicker="Verified credentials">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-6xl mx-auto">
+        {DATA.certificates.map(({ title, issuer, category, link, color, Icon }) => {
+          const c = colorMap[color] || colorMap.indigo;
+          return (
+            <a
+              key={title}
+              href={link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`group rounded-xl border border-neutral-200 dark:border-neutral-800 p-5 bg-white/70 dark:bg-neutral-950/40 hover:shadow-xl ${c.glow} hover:-translate-y-1 transition flex flex-col gap-3`}
+            >
+              <div className="flex items-start justify-between gap-2">
+                <span className={`inline-flex items-center justify-center size-10 rounded-lg ${c.bg} shrink-0`}>
+                  <Icon className={`size-5 ${c.icon}`} />
+                </span>
+                <Award className="size-4 opacity-40 group-hover:opacity-80 transition text-neutral-400 mt-1" />
+              </div>
+              <div>
+                <h3 className="font-semibold text-sm leading-snug">{title}</h3>
+                <p className="text-xs text-neutral-500 mt-0.5">{issuer}</p>
+              </div>
+              <span className={`inline-flex items-center self-start rounded-full px-2.5 py-0.5 text-xs font-medium ${c.badge}`}>
+                {category}
+              </span>
+            </a>
+          );
+        })}
+      </div>
+    </Section>
+  );
+}
+
 function Contact() {
   return (
     <Section id="contact" title="Contact" kicker="Let’s work together">
@@ -923,6 +1022,7 @@ export default function Portfolio() {
         <Skills />
         <Projects />
         <Profiles />
+        <Certificates />
         <Contact />
         <Footer />
       </div>
